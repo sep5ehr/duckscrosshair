@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="256" height="256" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background circle -->
+  <circle cx="128" cy="128" r="120" fill="#4CAF50" opacity="0.15"/>
+
+  <!-- Duck body -->
+  <ellipse cx="128" cy="150" rx="60" ry="50" fill="#FFD700"/>
+  <ellipse cx="128" cy="150" rx="58" ry="48" fill="#FFE066"/>
+
+  <!-- Duck head -->
+  <circle cx="175" cy="110" r="35" fill="#FFD700"/>
+  <circle cx="175" cy="110" r="33" fill="#FFE066"/>
+
+  <!-- Duck bill -->
+  <ellipse cx="200" cy="110" rx="20" ry="12" fill="#FF8C00"/>
+  <ellipse cx="200" cy="110" rx="18" ry="10" fill="#FF9F1C"/>
+  <!-- Nostril -->
+  <circle cx="205" cy="108" r="2" fill="#CC6600"/>
+
+  <!-- Eye -->
+  <circle cx="165" cy="100" r="8" fill="#2D2D2D"/>
+  <circle cx="167" cy="98" r="3" fill="#FFFFFF"/>
+
+  <!-- Wing -->
+  <ellipse cx="128" cy="145" rx="40" ry="30" fill="#FFC107"/>
+  <ellipse cx="128" cy="145" rx="35" ry="25" fill="#FFD700"/>
+
+  <!-- Crosshair overlay on duck -->
+  <g stroke="#2D2D2D" stroke-width="3" stroke-linecap="round" fill="none">
+    <!-- Horizontal line -->
+    <line x1="80" y1="150" x2="110" y2="150"/>
+    <line x1="146" y1="150" x2="176" y2="150"/>
+    <!-- Vertical line -->
+    <line x1="128" y1="110" x2="128" y2="80"/>
+    <line x1="128" y1="180" x2="128" y2="210"/>
+    <!-- Center dot -->
+    <circle cx="128" cy="150" r="4" fill="#2D2D2D"/>
+  </g>
+
+  <!-- Duck feet -->
+  <g fill="#FF8C00">
+    <ellipse cx="105" cy="195" rx="12" ry="6" transform="rotate(-20 105 195)"/>
+    <ellipse cx="150" cy="195" rx="12" ry="6" transform="rotate(20 150 195)"/>
+  </g>
+</svg>
