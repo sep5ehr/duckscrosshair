@@ -14,4 +14,8 @@ __all__ = [
     "CodeImportWidget",
     "TrayIcon",
     "create_crosshair_icon",
+<<<<<<< HEAD
 ]
+=======
+]
+>>>>>>> 3dea2aeecbaf60ffca7845c44bb6e5ef98fe9d21

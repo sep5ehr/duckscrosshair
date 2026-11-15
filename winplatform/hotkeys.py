@@ -36,6 +36,7 @@ VK_CONTROL = 0x11
 VK_MENU = 0x12  # Alt
 VK_LWIN = 0x5B
 VK_RWIN = 0x5C
+<<<<<<< HEAD
 VK_XBUTTON1 = 0x05
 VK_XBUTTON2 = 0x06
 # Navigation / system keys
@@ -75,6 +76,8 @@ MOUSE_BUTTON_VK = {
     "MouseLeft": 0x01, "MouseRight": 0x02, "MouseMiddle": 0x04,
     "MouseX1": VK_XBUTTON1, "MouseX2": VK_XBUTTON2,
 }
+=======
+>>>>>>> 3dea2aeecbaf60ffca7845c44bb6e5ef98fe9d21
 
 # Modifier flags
 MOD_ALT = 0x0001
@@ -133,11 +136,15 @@ class HotkeyManager(QObject):
     """Manages global hotkeys on Windows."""
 
     hotkey_triggered = Signal(int)  # hotkey_id
+<<<<<<< HEAD
     mouse_hotkey_triggered = Signal(int)  # hotkey_id (emitted from the mouse hook thread)
+=======
+>>>>>>> 3dea2aeecbaf60ffca7845c44bb6e5ef98fe9d21
 
     def __init__(self, parent=None):
         super().__init__(parent)
         self._hotkeys: Dict[int, Hotkey] = {}
+<<<<<<< HEAD
         self._mouse_hotkeys: Dict[tuple, int] = {}  # (button_name, modifiers) -> hotkey_id
         self._next_id = 1
         self._filter = HotkeyFilter(self)
@@ -147,12 +154,18 @@ class HotkeyManager(QObject):
         self._mouse_hook_thread = None
         self._mouse_hook_thread_id = None
         self.mouse_hotkey_triggered.connect(self._handle_hotkey)
+=======
+        self._next_id = 1
+        self._filter = HotkeyFilter(self)
+        self._registered = False
+>>>>>>> 3dea2aeecbaf60ffca7845c44bb6e5ef98fe9d21
 
         # Install native event filter
         from PySide6.QtCore import QCoreApplication
         QCoreApplication.instance().installNativeEventFilter(self._filter)
 
     def parse_hotkey_string(self, hotkey_str: str) -> tuple[int, int]:
+<<<<<<< HEAD
         """Parse "F8", "Ctrl+Shift+F9", "Alt+Space". Returns (virtual_key, modifiers)."""
         key, modifiers, _mouse = self.parse_hotkey_string_ex(hotkey_str)
         return key, modifiers
@@ -173,11 +186,28 @@ class HotkeyManager(QObject):
 
         for part in parts:
             if part in ("CTRL", "CONTROL"):
+=======
+        """
+        Parse a hotkey string like "F8", "Ctrl+Shift+F9", "Alt+Space".
+
+        Returns:
+            (virtual_key, modifiers)
+        """
+        hotkey_str = hotkey_str.strip().upper()
+        parts = [p.strip() for p in hotkey_str.split("+")]
+
+        modifiers = 0
+        key = 0
+
+        for part in parts:
+            if part == "CTRL" or part == "CONTROL":
+>>>>>>> 3dea2aeecbaf60ffca7845c44bb6e5ef98fe9d21
                 modifiers |= MOD_CONTROL
             elif part == "ALT":
                 modifiers |= MOD_ALT
             elif part == "SHIFT":
                 modifiers |= MOD_SHIFT
+<<<<<<< HEAD
             elif part in ("WIN", "WINDOWS"):
                 modifiers |= MOD_WIN
             else:
@@ -188,6 +218,15 @@ class HotkeyManager(QObject):
                     key = self._parse_key(part)
 
         return key, modifiers, mouse_button
+=======
+            elif part == "WIN" or part == "WINDOWS":
+                modifiers |= MOD_WIN
+            else:
+                # Key
+                key = self._parse_key(part)
+
+        return key, modifiers
+>>>>>>> 3dea2aeecbaf60ffca7845c44bb6e5ef98fe9d21
 
     def _parse_key(self, key_str: str) -> int:
         """Parse a key string to virtual key code."""
@@ -204,6 +243,7 @@ class HotkeyManager(QObject):
             "CTRL": VK_CONTROL, "CONTROL": VK_CONTROL,
             "ALT": VK_MENU,
             "WIN": VK_LWIN, "WINDOWS": VK_LWIN,
+<<<<<<< HEAD
             "LEFT": VK_LEFT, "UP": VK_UP, "RIGHT": VK_RIGHT, "DOWN": VK_DOWN,
             "HOME": VK_HOME, "END": VK_END,
             "PAGEUP": VK_PRIOR, "PGUP": VK_PRIOR,
@@ -217,6 +257,9 @@ class HotkeyManager(QObject):
         for i in range(10):
             key_map["NUM%d" % i] = VK_NUMPAD0 + i
             key_map["NUMPAD%d" % i] = VK_NUMPAD0 + i
+=======
+        }
+>>>>>>> 3dea2aeecbaf60ffca7845c44bb6e5ef98fe9d21
 
         # Check for single letter/number keys
         if len(key_str) == 1 and key_str.isalnum():
@@ -240,9 +283,13 @@ class HotkeyManager(QObject):
             logger.warning("Global hotkeys only supported on Windows")
             return None
 
+<<<<<<< HEAD
         key, modifiers, mouse_button = self.parse_hotkey_string_ex(hotkey_str)
         if mouse_button:
             return self._register_mouse_hotkey(hotkey_str, mouse_button, modifiers, callback, description)
+=======
+        key, modifiers = self.parse_hotkey_string(hotkey_str)
+>>>>>>> 3dea2aeecbaf60ffca7845c44bb6e5ef98fe9d21
         if key == 0:
             logger.error(f"Invalid hotkey: {hotkey_str}")
             return None
@@ -277,16 +324,21 @@ class HotkeyManager(QObject):
     def unregister_hotkey(self, hotkey_id: int) -> bool:
         """Unregister a hotkey by ID."""
         if sys.platform != "win32":
+<<<<<<< HEAD
             if hotkey_id in self._hotkeys:
                 del self._hotkeys[hotkey_id]
             for combo, hid in list(self._mouse_hotkeys.items()):
                 if hid == hotkey_id:
                     del self._mouse_hotkeys[combo]
             return True
+=======
+            return False
+>>>>>>> 3dea2aeecbaf60ffca7845c44bb6e5ef98fe9d21
 
         if hotkey_id not in self._hotkeys:
             return False
 
+<<<<<<< HEAD
         was_mouse = False
         for combo, hid in list(self._mouse_hotkeys.items()):
             if hid == hotkey_id:
@@ -300,6 +352,8 @@ class HotkeyManager(QObject):
             del self._hotkeys[hotkey_id]
             return True
 
+=======
+>>>>>>> 3dea2aeecbaf60ffca7845c44bb6e5ef98fe9d21
         try:
             from ctypes import windll
             result = windll.user32.UnregisterHotKey(None, hotkey_id)
@@ -319,6 +373,7 @@ class HotkeyManager(QObject):
         for hotkey_id in list(self._hotkeys.keys()):
             self.unregister_hotkey(hotkey_id)
         self._hotkeys.clear()
+<<<<<<< HEAD
         self._mouse_hotkeys.clear()
         self._stop_mouse_hook()
         self._registered = False
@@ -428,6 +483,10 @@ class HotkeyManager(QObject):
         _key, _mods, mouse = self.parse_hotkey_string_ex(hotkey_str)
         return mouse is not None
 
+=======
+        self._registered = False
+
+>>>>>>> 3dea2aeecbaf60ffca7845c44bb6e5ef98fe9d21
     def _handle_hotkey(self, hotkey_id: int):
         """Handle triggered hotkey."""
         hotkey = self._hotkeys.get(hotkey_id)
@@ -445,6 +504,7 @@ class HotkeyManager(QObject):
 
     def check_conflicts(self, hotkey_str: str) -> list[str]:
         """Check for conflicts with existing hotkeys."""
+<<<<<<< HEAD
         key, modifiers, mouse = self.parse_hotkey_string_ex(hotkey_str)
         conflicts = []
 
@@ -459,6 +519,13 @@ class HotkeyManager(QObject):
             if hk.id in mouse_ids:
                 continue
             if hk.key == key and hk.modifiers == modifiers and key != 0:
+=======
+        key, modifiers = self.parse_hotkey_string(hotkey_str)
+        conflicts = []
+
+        for hk in self._hotkeys.values():
+            if hk.key == key and hk.modifiers == modifiers:
+>>>>>>> 3dea2aeecbaf60ffca7845c44bb6e5ef98fe9d21
                 conflicts.append(hk.description)
 
         return conflicts

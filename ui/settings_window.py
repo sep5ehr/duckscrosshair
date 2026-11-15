@@ -15,7 +15,11 @@ from crosshair.models import CrosshairSettings, OverlaySettings, ShortcutSetting
 from crosshair.renderer import CrosshairRenderer
 from ui.preview_widget import PreviewWidget, PreviewControls
 from ui.crosshair_controls import CrosshairControls
+<<<<<<< HEAD
 from ui.multi_game_widget import MultiGameWidget
+=======
+from ui.code_import_widget import CodeImportWidget
+>>>>>>> 3dea2aeecbaf60ffca7845c44bb6e5ef98fe9d21
 from overlay.monitor_manager import MonitorManager, MonitorInfo
 from winplatform.hotkeys import get_hotkey_manager, HotkeyManager
 from storage.settings_store import SettingsStore
@@ -28,7 +32,10 @@ class SettingsWindow(QMainWindow):
     overlay_toggled = Signal(bool)
     settings_changed = Signal(AppSettings)
     close_requested = Signal()
+<<<<<<< HEAD
     force_close_requested = Signal()
+=======
+>>>>>>> 3dea2aeecbaf60ffca7845c44bb6e5ef98fe9d21
 
     def __init__(self, monitor_manager: MonitorManager, settings_store: SettingsStore, parent=None):
         super().__init__(parent)
@@ -67,7 +74,11 @@ class SettingsWindow(QMainWindow):
         self._create_general_tab()
         self._create_crosshair_tab()
         self._create_preview_tab()
+<<<<<<< HEAD
         self._create_games_tab()
+=======
+        self._create_code_tab()
+>>>>>>> 3dea2aeecbaf60ffca7845c44bb6e5ef98fe9d21
         self._create_shortcuts_tab()
         self._create_about_tab()
 
@@ -210,6 +221,7 @@ class SettingsWindow(QMainWindow):
 
         # Controls (right side)
         self.preview_controls = PreviewControls()
+<<<<<<< HEAD
         self.preview_controls.background_changed.connect(self._on_preview_background_changed)
         self.preview_controls.zoom_changed.connect(self.preview_widget.set_zoom)
         self.preview_controls.center_mark_toggled.connect(self.preview_widget.set_show_center_mark)
@@ -222,19 +234,31 @@ class SettingsWindow(QMainWindow):
         else:
             self.preview_controls.bg_combo.setCurrentText("Checkerboard")
 
+=======
+        self.preview_controls.background_changed.connect(self.preview_widget.set_background)
+        self.preview_controls.zoom_changed.connect(self.preview_widget.set_zoom)
+        self.preview_controls.center_mark_toggled.connect(self.preview_widget.set_show_center_mark)
+
+>>>>>>> 3dea2aeecbaf60ffca7845c44bb6e5ef98fe9d21
         # Add to layout with stretch factors
         layout.addWidget(self.preview_widget, 3)
         layout.addWidget(self.preview_controls, 1)
 
         self.tabs.addTab(widget, "Preview")
 
+<<<<<<< HEAD
     def _create_games_tab(self):
         """Create the multi-game (CS2 / VALORANT / Deadlock) code tab."""
+=======
+    def _create_code_tab(self):
+        """Create CS2 Code import/export tab."""
+>>>>>>> 3dea2aeecbaf60ffca7845c44bb6e5ef98fe9d21
         widget = QWidget()
         layout = QHBoxLayout(widget)
         layout.setContentsMargins(8, 8, 8, 8)
         layout.setSpacing(8)
 
+<<<<<<< HEAD
         self.games_widget = MultiGameWidget()
         self.games_widget.set_current_settings(self._settings.crosshair)
         self.games_widget.set_saved_crosshairs(self._settings.saved_crosshairs)
@@ -251,6 +275,23 @@ class SettingsWindow(QMainWindow):
         layout.addWidget(self.games_preview, 1)
 
         self.tabs.addTab(widget, "Games")
+=======
+        self.code_widget = CodeImportWidget()
+        self.code_widget.set_current_settings(self._settings.crosshair)
+        self.code_widget.settings_imported.connect(self._on_code_imported)
+        self.code_widget.code_exported.connect(self._on_code_exported)
+        self.code_widget.validation_result.connect(self._on_validation_result)
+
+        # Preview widget (right side)
+        self.code_preview = PreviewWidget(self._renderer)
+        self.code_preview.setMinimumWidth(200)
+        self.code_preview.setMaximumWidth(250)
+
+        layout.addWidget(self.code_widget, 2)
+        layout.addWidget(self.code_preview, 1)
+
+        self.tabs.addTab(widget, "CS2 Code")
+>>>>>>> 3dea2aeecbaf60ffca7845c44bb6e5ef98fe9d21
 
     def _create_shortcuts_tab(self):
         """Create Keyboard Shortcuts tab."""
@@ -296,6 +337,7 @@ class SettingsWindow(QMainWindow):
         toggle_settings_layout.addWidget(self.toggle_settings_test_btn)
         shortcuts_layout.addRow("Toggle Settings:", toggle_settings_layout)
 
+<<<<<<< HEAD
         # Force close
         force_close_layout = QHBoxLayout()
         self.force_close_edit = QLineEdit(self._settings.shortcuts.force_close)
@@ -308,6 +350,8 @@ class SettingsWindow(QMainWindow):
         force_close_layout.addWidget(self.force_close_test_btn)
         shortcuts_layout.addRow("Force Close:", force_close_layout)
 
+=======
+>>>>>>> 3dea2aeecbaf60ffca7845c44bb6e5ef98fe9d21
         left_layout.addWidget(shortcuts_group)
 
         # Conflict detection
@@ -329,9 +373,13 @@ class SettingsWindow(QMainWindow):
         info_layout = QVBoxLayout(info_group)
         info_text = QLabel(
             "Global hotkeys work system-wide, even when the application is not focused.\n"
+<<<<<<< HEAD
             "Default: F8 = Toggle Overlay, F9 = Toggle Settings, Ctrl+Shift+Q = Force Close\n"
             "Click a field and press any key combination or mouse button "
             "(MouseLeft/Right/Middle/X1/X2) to bind it.\n"
+=======
+            "Default: F8 = Toggle Overlay, F9 = Toggle Settings\n"
+>>>>>>> 3dea2aeecbaf60ffca7845c44bb6e5ef98fe9d21
             "Press Esc to cancel key capture."
         )
         info_text.setWordWrap(True)
@@ -343,7 +391,10 @@ class SettingsWindow(QMainWindow):
 
         # Right panel - preview
         self.shortcuts_preview = PreviewWidget(self._renderer)
+<<<<<<< HEAD
         self.shortcuts_preview.set_background(getattr(self._settings, "preview_background", "checkerboard"))
+=======
+>>>>>>> 3dea2aeecbaf60ffca7845c44bb6e5ef98fe9d21
         self.shortcuts_preview.setMinimumWidth(200)
         self.shortcuts_preview.setMaximumWidth(250)
 
@@ -462,6 +513,10 @@ class SettingsWindow(QMainWindow):
         self.toggle_settings_edit.setText(s.shortcuts.toggle_settings)
 
         # Code widget
+<<<<<<< HEAD
+=======
+        self.code_widget.set_current_settings(s.crosshair)
+>>>>>>> 3dea2aeecbaf60ffca7845c44bb6e5ef98fe9d21
 
     def _get_preview_background_name(self) -> str:
         # This would come from settings if we stored it
@@ -508,11 +563,14 @@ class SettingsWindow(QMainWindow):
             self._on_hotkey_toggle_settings,
             "Toggle Settings"
         )
+<<<<<<< HEAD
         self.hotkey_manager.register_hotkey(
             s.force_close,
             self._on_hotkey_force_close,
             "Force Close"
         )
+=======
+>>>>>>> 3dea2aeecbaf60ffca7845c44bb6e5ef98fe9d21
 
     def _unregister_hotkeys(self):
         """Unregister all hotkeys."""
@@ -531,10 +589,13 @@ class SettingsWindow(QMainWindow):
             self.raise_()
             self.activateWindow()
 
+<<<<<<< HEAD
     def _on_hotkey_force_close(self):
         """Hotkey callback for force close."""
         self.force_close_requested.emit()
 
+=======
+>>>>>>> 3dea2aeecbaf60ffca7845c44bb6e5ef98fe9d21
     def _on_overlay_toggled(self, enabled: bool):
         """Handle overlay enable/disable."""
         self._settings.overlay.enabled = enabled
@@ -602,8 +663,12 @@ class SettingsWindow(QMainWindow):
         self.preview_widget.update()
         self.general_preview.update()
         self.crosshair_preview.update()
+<<<<<<< HEAD
         self.games_widget.set_current_settings(settings)
         self.games_widget.set_saved_crosshairs(self._settings.saved_crosshairs)
+=======
+        self.code_widget.set_current_settings(settings)
+>>>>>>> 3dea2aeecbaf60ffca7845c44bb6e5ef98fe9d21
         self._mark_dirty()
 
     def _on_reset_crosshair(self):
@@ -618,6 +683,7 @@ class SettingsWindow(QMainWindow):
         self._mark_dirty()
         self._show_status(f"Imported {format_name}")
 
+<<<<<<< HEAD
     def _on_preview_background_changed(self, background: str):
         """Apply the preview-tab background to every sidebar preview and persist it."""
         self._settings.preview_background = background
@@ -633,6 +699,8 @@ class SettingsWindow(QMainWindow):
         self._settings.saved_crosshairs = list(presets or [])
         self._mark_dirty()
 
+=======
+>>>>>>> 3dea2aeecbaf60ffca7845c44bb6e5ef98fe9d21
     def _on_code_exported(self, share_code: str, warnings: list):
         """Handle exported share code."""
         self._show_status("Share code exported")
@@ -673,13 +741,17 @@ class SettingsWindow(QMainWindow):
             self._on_hotkey_toggle_overlay()
         elif name == "toggle_settings":
             self._on_hotkey_toggle_settings()
+<<<<<<< HEAD
         elif name == "force_close":
             self._on_hotkey_force_close()
+=======
+>>>>>>> 3dea2aeecbaf60ffca7845c44bb6e5ef98fe9d21
 
     def _check_hotkey_conflicts(self):
         """Check for hotkey conflicts."""
         conflicts = []
 
+<<<<<<< HEAD
         edits = [
             ("Toggle Overlay", self.toggle_overlay_edit.text()),
             ("Toggle Settings", self.toggle_settings_edit.text()),
@@ -693,6 +765,16 @@ class SettingsWindow(QMainWindow):
             for j in range(i + 1, len(edits)):
                 if edits[i][1].upper() == edits[j][1].upper() and edits[i][1]:
                     conflicts.append("%s and %s use the same key" % (edits[i][0], edits[j][0]))
+=======
+        # Check toggle overlay
+        conflicts.extend(self.hotkey_manager.check_conflicts(self.toggle_overlay_edit.text()))
+        # Check toggle settings
+        conflicts.extend(self.hotkey_manager.check_conflicts(self.toggle_settings_edit.text()))
+
+        # Check duplicates between the two
+        if self.toggle_overlay_edit.text().upper() == self.toggle_settings_edit.text().upper():
+            conflicts.append("Toggle Overlay and Toggle Settings use the same key")
+>>>>>>> 3dea2aeecbaf60ffca7845c44bb6e5ef98fe9d21
 
         if conflicts:
             self.conflict_label.setText("Conflicts: " + ", ".join(conflicts))
@@ -701,6 +783,7 @@ class SettingsWindow(QMainWindow):
             self.conflict_label.setText("No conflicts detected")
             self.conflict_label.setStyleSheet("color: #4caf50;")
 
+<<<<<<< HEAD
     def _shortcut_edits(self):
         """All bindable shortcut input fields with their settings attribute."""
         edits = []
@@ -744,11 +827,23 @@ class SettingsWindow(QMainWindow):
             # Esc cancels capture without changing the binding
             if key == Qt.Key.Key_Escape and not (modifiers & ~Qt.KeyboardModifier.NoModifier):
                 return True
+=======
+    def eventFilter(self, obj, event):
+        """Event filter for key capture in shortcut fields."""
+        from PySide6.QtCore import QEvent
+        from PySide6.QtGui import QKeyEvent
+
+        if event.type() == QEvent.Type.KeyPress and obj in (self.toggle_overlay_edit, self.toggle_settings_edit):
+            key_event = event
+            key = key_event.key()
+            modifiers = key_event.modifiers()
+>>>>>>> 3dea2aeecbaf60ffca7845c44bb6e5ef98fe9d21
 
             # Ignore modifier-only presses
             if key in (Qt.Key.Key_Control, Qt.Key.Key_Shift, Qt.Key.Key_Alt, Qt.Key.Key_Meta):
                 return True
 
+<<<<<<< HEAD
             parts = self._modifier_parts(modifiers)
             key_name = self._key_to_string(key)
             if key_name and (modifiers & Qt.KeyboardModifier.KeypadModifier) \
@@ -759,10 +854,42 @@ class SettingsWindow(QMainWindow):
 
             if parts:
                 self._apply_shortcut(obj, edits[obj], "+".join(parts))
+=======
+            # Build key string
+            parts = []
+            if modifiers & Qt.KeyboardModifier.ControlModifier:
+                parts.append("Ctrl")
+            if modifiers & Qt.KeyboardModifier.ShiftModifier:
+                parts.append("Shift")
+            if modifiers & Qt.KeyboardModifier.AltModifier:
+                parts.append("Alt")
+            if modifiers & Qt.KeyboardModifier.MetaModifier:
+                parts.append("Win")
+
+            # Get key name
+            key_name = self._key_to_string(key)
+            if key_name:
+                parts.append(key_name)
+
+            hotkey_str = "+".join(parts)
+            obj.setText(hotkey_str)
+
+            # Update settings
+            if obj == self.toggle_overlay_edit:
+                self._settings.shortcuts.toggle_overlay = hotkey_str
+            else:
+                self._settings.shortcuts.toggle_settings = hotkey_str
+
+            # Re-register hotkeys
+            self.hotkey_manager.unregister_all()
+            self._register_hotkeys()
+
+>>>>>>> 3dea2aeecbaf60ffca7845c44bb6e5ef98fe9d21
             return True
 
         return super().eventFilter(obj, event)
 
+<<<<<<< HEAD
     def _modifier_parts(self, modifiers) -> list:
         parts = []
         if modifiers & Qt.KeyboardModifier.ControlModifier:
@@ -782,6 +909,8 @@ class SettingsWindow(QMainWindow):
         self.hotkey_manager.unregister_all()
         self._register_hotkeys()
 
+=======
+>>>>>>> 3dea2aeecbaf60ffca7845c44bb6e5ef98fe9d21
     def _key_to_string(self, key: int) -> str:
         """Convert Qt key to string."""
         key_map = {
@@ -795,6 +924,7 @@ class SettingsWindow(QMainWindow):
             Qt.Key.Key_F4: "F4", Qt.Key.Key_F5: "F5", Qt.Key.Key_F6: "F6",
             Qt.Key.Key_F7: "F7", Qt.Key.Key_F8: "F8", Qt.Key.Key_F9: "F9",
             Qt.Key.Key_F10: "F10", Qt.Key.Key_F11: "F11", Qt.Key.Key_F12: "F12",
+<<<<<<< HEAD
             Qt.Key.Key_Left: "Left", Qt.Key.Key_Up: "Up",
             Qt.Key.Key_Right: "Right", Qt.Key.Key_Down: "Down",
             Qt.Key.Key_Home: "Home", Qt.Key.Key_End: "End",
@@ -807,6 +937,9 @@ class SettingsWindow(QMainWindow):
         for i in range(10):
             key_map[Qt.Key.Key_0 + i] = str(i)
             key_map[Qt.Key.Key_F1 + i] = "F%d" % (i + 1)
+=======
+        }
+>>>>>>> 3dea2aeecbaf60ffca7845c44bb6e5ef98fe9d21
 
         if key in key_map:
             return key_map[key]

@@ -109,7 +109,10 @@ class CrosshairOverlayApplication(QApplication):
         self.settings_window.overlay_toggled.connect(self._on_overlay_toggled)
         self.settings_window.settings_changed.connect(self._on_settings_changed)
         self.settings_window.close_requested.connect(self._on_settings_closed)
+<<<<<<< HEAD
         self.settings_window.force_close_requested.connect(self._quit_application)
+=======
+>>>>>>> 3dea2aeecbaf60ffca7845c44bb6e5ef98fe9d21
 
         # Tray signals
         self.tray_icon.show_settings.connect(self._show_settings)

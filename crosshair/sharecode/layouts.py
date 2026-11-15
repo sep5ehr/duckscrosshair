@@ -237,4 +237,8 @@ def get_fields_for_version(version: int) -> list:
     """Get field definitions for a specific version."""
     if version == 1:
         return CS2_FIELDS_V1
+<<<<<<< HEAD
     raise UnsupportedVersionError(f"Unsupported CS2 share code version: {version}")
+=======
+    raise UnsupportedVersionError(f"Unsupported CS2 share code version: {version}")
+>>>>>>> 3dea2aeecbaf60ffca7845c44bb6e5ef98fe9d21

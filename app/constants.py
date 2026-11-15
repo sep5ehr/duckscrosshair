@@ -5,7 +5,11 @@ from typing import Final
 
 # Application metadata
 APP_NAME: Final[str] = "DucksCrosshair"
+<<<<<<< HEAD
 APP_VERSION: Final[str] = "1.2.0"
+=======
+APP_VERSION: Final[str] = "1.0.0"
+>>>>>>> 3dea2aeecbaf60ffca7845c44bb6e5ef98fe9d21
 ORG_NAME: Final[str] = "DucksCrosshair"
 
 # Settings file
@@ -22,7 +26,10 @@ class DefaultCrosshair:
     size: int = 6
     color: str = "#00FF00"
     opacity: float = 1.0
+<<<<<<< HEAD
     scale: float = 1.0
+=======
+>>>>>>> 3dea2aeecbaf60ffca7845c44bb6e5ef98fe9d21
     outline_enabled: bool = True
     outline_color: str = "#000000"
     outline_thickness: int = 1
@@ -54,7 +61,10 @@ class DefaultOverlay:
 class DefaultShortcuts:
     toggle_overlay: str = "F8"
     toggle_settings: str = "F9"
+<<<<<<< HEAD
     force_close: str = "Ctrl+Shift+Q"
+=======
+>>>>>>> 3dea2aeecbaf60ffca7845c44bb6e5ef98fe9d21
 
 
 # Validation ranges

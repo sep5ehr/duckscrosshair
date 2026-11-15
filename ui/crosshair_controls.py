@@ -19,7 +19,10 @@ DEFAULT_CROSSHAIR = CrosshairSettings(
     size=6,
     color="#00FF00",
     opacity=1.0,
+<<<<<<< HEAD
     scale=1.0,
+=======
+>>>>>>> 3dea2aeecbaf60ffca7845c44bb6e5ef98fe9d21
     outline_enabled=True,
     outline_color="#000000",
     outline_thickness=1,
@@ -271,6 +274,7 @@ class CrosshairControls(QWidget):
         )
         core_layout.addWidget(self.size_control)
 
+<<<<<<< HEAD
         # Global scale (resizes the whole crosshair)
         self.scale_control = FloatSliderSpinBox(
             "Scale", VALIDATION_RANGES["scale"][0], VALIDATION_RANGES["scale"][1],
@@ -278,6 +282,8 @@ class CrosshairControls(QWidget):
         )
         core_layout.addWidget(self.scale_control)
 
+=======
+>>>>>>> 3dea2aeecbaf60ffca7845c44bb6e5ef98fe9d21
         layout.addWidget(core_group)
 
         # Color & Opacity group
@@ -453,7 +459,11 @@ class CrosshairControls(QWidget):
         """Connect all control signals to emit settings changed."""
         controls = [
             self.gap_control, self.length_control, self.thickness_control,
+<<<<<<< HEAD
             self.size_control, self.scale_control, self.opacity_control, self.outline_thickness_control,
+=======
+            self.size_control, self.opacity_control, self.outline_thickness_control,
+>>>>>>> 3dea2aeecbaf60ffca7845c44bb6e5ef98fe9d21
             self.dynamic_spread_control, self.split_distance_control,
             self.inner_alpha_control, self.outer_alpha_control,
             self.split_ratio_control, self.ref_res_control, self.scope_scale_control
@@ -484,7 +494,10 @@ class CrosshairControls(QWidget):
             length=self.length_control.value(),
             thickness=self.thickness_control.value(),
             size=self.size_control.value(),
+<<<<<<< HEAD
             scale=self.scale_control.value(),
+=======
+>>>>>>> 3dea2aeecbaf60ffca7845c44bb6e5ef98fe9d21
             color=self.color_btn.get_color(),
             opacity=self.opacity_control.value(),
             outline_enabled=self.outline_check.isChecked(),
@@ -509,7 +522,10 @@ class CrosshairControls(QWidget):
         self.length_control.set_value(settings.length)
         self.thickness_control.set_value(settings.thickness)
         self.size_control.set_value(settings.size)
+<<<<<<< HEAD
         self.scale_control.set_value(getattr(settings, "scale", 1.0))
+=======
+>>>>>>> 3dea2aeecbaf60ffca7845c44bb6e5ef98fe9d21
         self.color_btn.set_color(settings.color)
         self.opacity_control.set_value(settings.opacity)
         self.outline_check.setChecked(settings.outline_enabled)

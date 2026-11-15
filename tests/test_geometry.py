@@ -42,4 +42,8 @@ def test_rect_center():
 
 
 if __name__ == "__main__":
+<<<<<<< HEAD
     pytest.main([__file__, "-v"])
+=======
+    pytest.main([__file__, "-v"])
+>>>>>>> 3dea2aeecbaf60ffca7845c44bb6e5ef98fe9d21

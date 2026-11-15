@@ -25,4 +25,8 @@ class AppState:
         return self.settings.overlay
 
     def get_shortcuts(self) -> ShortcutSettings:
+<<<<<<< HEAD
         return self.settings.shortcuts
+=======
+        return self.settings.shortcuts
+>>>>>>> 3dea2aeecbaf60ffca7845c44bb6e5ef98fe9d21

@@ -212,4 +212,8 @@ def generate_icons():
 
 
 if __name__ == "__main__":
+<<<<<<< HEAD
     generate_icons()
+=======
+    generate_icons()
+>>>>>>> 3dea2aeecbaf60ffca7845c44bb6e5ef98fe9d21

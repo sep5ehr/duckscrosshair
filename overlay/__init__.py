@@ -7,4 +7,8 @@ __all__ = [
     "MonitorManager",
     "MonitorInfo",
     "OverlayWindow",
+<<<<<<< HEAD
 ]
+=======
+]
+>>>>>>> 3dea2aeecbaf60ffca7845c44bb6e5ef98fe9d21

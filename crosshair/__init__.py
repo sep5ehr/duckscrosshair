@@ -55,4 +55,8 @@ __all__ = [
     "decode_share_code",
     "encode_share_code",
     "validate_share_code",
+<<<<<<< HEAD
 ]
+=======
+]
+>>>>>>> 3dea2aeecbaf60ffca7845c44bb6e5ef98fe9d21
