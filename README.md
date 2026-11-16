@@ -1,51 +1,54 @@
-<<<<<<< HEAD
-=======
-# duckscrosshair
->>>>>>> 3dea2aeecbaf60ffca7845c44bb6e5ef98fe9d21
 # Crosshair Overlay
 
-A customizable crosshair overlay for Windows desktop applications, with full support for Counter-Strike 2 (CS2) share code import/export.
+<p align="center">
+  <img src="resources/icons/icon.png" alt="Crosshair Overlay" width="120"/>
+</p>
 
-<<<<<<< HEAD
-![Version](https://img.shields.io/badge/version-1.2.0-blue.svg)
-=======
->>>>>>> 3dea2aeecbaf60ffca7845c44bb6e5ef98fe9d21
-![Python](https://img.shields.io/badge/python-3.11+-blue.svg)
-![PySide6](https://img.shields.io/badge/PySide6-6.6+-green.svg)
-![Platform](https://img.shields.io/badge/platform-Windows%2010%2F11-lightgrey.svg)
-![License](https://img.shields.io/badge/license-MIT-blue.svg)
+<p align="center">
+  <b>A customizable crosshair overlay for Windows desktop applications.</b><br/>
+  <b>Full support for Counter-Strike 2 (CS2), VALORANT, and Deadlock share codes.</b>
+</p>
 
-## Features
+<p align="center">
+  <img src="https://img.shields.io/badge/Python-3.10%2B-blue?logo=python" alt="Python"/>
+  <img src="https://img.shields.io/badge/Platform-Windows-0078D6?logo=windows" alt="Windows"/>
+  <img src="https://img.shields.io/badge/License-MIT-green" alt="License"/>
+  <img src="https://img.shields.io/badge/GUI-PySide6-41CD52?logo=qt" alt="PySide6"/>
+</p>
 
-- **Transparent Desktop Overlay**: Borderless, click-through, always-on-top crosshair
-<<<<<<< HEAD
-- **Full Customization**: Gap, length, thickness, dot size, global **Scale** (resizes the whole crosshair), colors, outline, center dot, T-style
-- **Live Preview**: Real-time preview in settings window with background options and zoom (the background chosen in the Preview tab is applied to every sidebar preview)
-- **Saved Crosshairs**: Save the crosshair you build in the app as a named preset (persisted), load/delete presets, and turn the current app crosshair into a CS2 / VALORANT / Deadlock share code from the Games tab
-- **Multi-Game Share Codes**: CS2 (legacy-v1, legacy-v3, legacy-v4, native cs2-v1), VALORANT profile codes, Deadlock `DL.` reticle codes — with auto-detection, cross-game conversion and conversion reports
-- **CS2 Share Codes**: Import and export CS2 crosshair share codes (all four formats; new codes default to native `cs2-v1`)
-=======
-- **Full Customization**: Gap, length, thickness, size, colors, outline, center dot, T-style
-- **Live Preview**: Real-time preview in settings window with background options and zoom
-- **CS2 Share Codes**: Import and export CS2 crosshair share codes (current format v1)
->>>>>>> 3dea2aeecbaf60ffca7845c44bb6e5ef98fe9d21
-- **Multi-Monitor Support**: Select which monitor displays the overlay
-- **Global Hotkeys**: Toggle overlay (F8) and settings (F9) system-wide
-- **System Tray**: Quick access to settings, toggle, and exit
-- **Persistent Settings**: Auto-saved to `%APPDATA%/CrosshairOverlay/settings.json`
-- **DPI Aware**: Handles Windows display scaling correctly
+---
 
-## Screenshots
+## 📖 About
 
-*[Screenshots would go here]*
+**Crosshair Overlay** is a transparent, click-through, always-on-top crosshair overlay for Windows. It is designed primarily for **shooting games** to help with **no-scope sniper shots** by keeping a static crosshair fixed on your screen.
 
-## Installation
+The application allows you to fully customize your crosshair, save presets, and import/export share codes for **Counter-Strike 2 (CS2)**, **VALORANT**, and **Deadlock**.
+
+## ✨ Features
+
+- 🎯 **Transparent Desktop Overlay**: Borderless, click-through, always-on-top crosshair.
+- 🔧 **Full Customization**: Gap, length, thickness, dot size, global **Scale**, colors, outline, center dot, T-style, and more.
+- 👁️ **Live Preview**: Real-time preview in the settings window with background options and zoom.
+- 💾 **Saved Crosshairs**: Save your crosshair as a named preset, load/delete presets.
+- 🔄 **Multi-Game Share Codes**:
+  - **CS2**: legacy-v1, legacy-v3, legacy-v4, native cs2-v1.
+  - **VALORANT**: profile codes.
+  - **Deadlock**: `DL.` reticle codes.
+  - Auto-detection, cross-game conversion, and conversion reports.
+- 🖥️ **Multi-Monitor Support**: Select which monitor displays the overlay.
+- ⌨️ **Global Hotkeys**: Toggle overlay (**F8**) and settings (**F9**) system-wide.
+- 📌 **System Tray**: Quick access to settings, toggle, and exit.
+- 💾 **Persistent Settings**: Auto-saved to `%APPDATA%/CrosshairOverlay/settings.json`.
+- 📏 **DPI Aware**: Handles Windows display scaling correctly.
+
+## 🚀 Getting Started
 
 ### From Source
 
-```powershell
+
 # Clone or download the project
-cd crosshair-overlay
+git clone https://github.com/sep5ehr/duckscrosshair.git
+cd duckscrosshair
 
 # Create virtual environment
 py -3.11 -m venv .venv
@@ -57,11 +60,8 @@ pip install -r requirements.txt
 
 # Run the application
 python main.py
-```
+Building Executable
 
-### Building Executable
-
-```powershell
 # Install PyInstaller
 pip install pyinstaller
 
@@ -70,42 +70,35 @@ pyinstaller --noconfirm --clean --onedir --windowed --name "CrosshairOverlay" ma
 
 # Or build single-file
 pyinstaller --noconfirm --clean --onefile --windowed --name "CrosshairOverlay" main.py
-```
+The executable will be in dist/CrosshairOverlay/.
 
-The executable will be in `dist/CrosshairOverlay/`.
+⚠️ PyInstaller requires an .ico file for the executable icon. Convert your PNG to ICO first (using Pillow or an online converter).
 
-## Usage
+🎮 Usage
+Launch: Run python main.py or the built executable.
 
-1. **Launch**: Run `python main.py` or the built executable
-2. **Overlay**: Appears at screen center on primary monitor
-3. **Settings**: Press **F9** or click tray icon → Settings
-4. **Toggle Overlay**: Press **F8** or use tray menu
-5. **Customize**: Adjust all crosshair properties in the settings window
-<<<<<<< HEAD
-6. **Import / Export Codes**: Paste any supported code (CS2, VALORANT, Deadlock) in the "Games" tab — the format is auto-detected — then Import; adjust settings and Encode/Export, or convert between games
-=======
-6. **Import CS2 Code**: Paste a share code in the "CS2 Code" tab and click Import
-7. **Export CS2 Code**: Adjust settings, go to "CS2 Code" tab, click Encode/Export
->>>>>>> 3dea2aeecbaf60ffca7845c44bb6e5ef98fe9d21
+Overlay: Appears at screen center on the primary monitor.
 
-## Default Hotkeys
+Settings: Press F9 or click the tray icon → Settings.
 
-| Hotkey | Action |
-|--------|--------|
-| **F8** | Toggle overlay on/off |
-| **F9** | Show/hide settings window |
-<<<<<<< HEAD
-| **Ctrl+Shift+Q** | Force close the app |
-| **Esc** | Close dialogs / cancel operations |
+Toggle Overlay: Press F8 or use the tray menu.
 
-*Hotkeys can be customized in the Shortcuts tab. Click a shortcut field and press any key combination **or mouse button** (`MouseLeft`, `MouseRight`, `MouseMiddle`, `MouseX1`/`Mouse4`, `MouseX2`/`Mouse5`) to bind it. Keyboard hotkeys use `RegisterHotKey`; mouse buttons use a low-level mouse hook (Windows).*
+Customize: Adjust all crosshair properties in the settings window.
 
-## Multi-Game Codec Architecture
+Import / Export Codes: Paste any supported code (CS2, VALORANT, Deadlock) in the Games tab — the format is auto-detected — then Import; adjust settings and Encode/Export, or convert between games.
 
-Independent, verified codecs per game (the old app-internal codec in
-`crosshair/sharecode/` is kept untouched for backward compatibility):
+⌨️ Default Hotkeys
+Hotkey	Action
+F8	Toggle overlay on/off
+F9	Show/hide settings window
+Ctrl+Shift+Q	Force close the app
+Esc	Close dialogs / cancel operations
+Hotkeys can be customized in the Shortcuts tab. Click a shortcut field and press any key combination or mouse button (MouseLeft, MouseRight, MouseMiddle, MouseX1/Mouse4, MouseX2/Mouse5) to bind it.
 
-```
+🧩 Multi-Game Codec Architecture
+Independent, verified codecs per game (the old app-internal codec in crosshair/sharecode/ is kept untouched for backward compatibility):
+
+
 crosshair/
   codecs/
     base.py            # CodecResult / DetectionResult / ConversionReport / GameCodec
@@ -131,87 +124,40 @@ crosshair/
     convert.py         # convert_crosshair(code, target_game) with ConversionReport
     app_model.py       # bridge to the app's CrosshairSettings
     validation.py
-```
+Pipeline for conversion: source code → source decoder → universal model → target encoder → target code. The original code is always kept in metadata; conversion reports list converted / unsupported / defaulted / unrepresentable properties. The settings window has a new Games tab.
 
-Pipeline for conversion: source code → source decoder → universal model →
-target encoder → target code. The original code is always kept in metadata;
-conversion reports list converted / unsupported / defaulted / unrepresentable
-properties. The settings window has a new **Games** tab (the original
-**CS2 Code** tab is unchanged).
+Deadlock Support Scope (Honest)
+DL. codes are validated (prefix + base64url) and round-trip byte-identically (raw payload preserved, generic protobuf wire parsing included). Per-field game semantics of the DL. payload could not be verified against a reference implementation in this environment and are therefore reported as best-effort/unverified rather than guessed. Converting a non-Deadlock code into a DL. code is refused (reported as unrepresentable) instead of fabricating a payload.
 
-### Deadlock support scope (honest)
+📄 CS2 Share Code Format
+The application implements the current CS2 share code format (version 1). The real game formats are implemented (ported from the verified csgo-sharecode reference):
 
-`DL.` codes are validated (prefix + base64url) and round-trip byte-identically
-(raw payload preserved, generic protobuf wire parsing included). Per-field
-game semantics of the DL. payload could not be verified against a reference
-implementation in this environment and are therefore reported as
-best-effort/unverified rather than guessed. Converting a non-Deadlock code
-*into* a DL. code is refused (reported as unrepresentable) instead of
-fabricating a payload.
-=======
-| **Esc** | Close dialogs / cancel operations |
+Format	Container	Notes
+legacy-v1	CSGO-xxxxx-xxxxx-xxxxx-xxxxx-xxxxx	CS:GO era
+legacy-v3	same legacy container	pixel values + screen height
+legacy-v4	same legacy container	adds outline mode + Static Square
+cs2-v1	CS + 44 chars, no dashes	native CS2: outline RGBA, scope dot prefs, negative gap, 0.01-step alphas
+Both containers are base-57 big numbers (dictionary excludes 0, 1, I, g, l, _), byte 0 = checksum sum(bytes[1:]) % 256, byte 1 = version. Formats are identified by container + version, never by version alone (legacy-v1 and cs2-v1 both store version byte 1).
 
-*Hotkeys can be customized in the Shortcuts tab.*
->>>>>>> 3dea2aeecbaf60ffca7845c44bb6e5ef98fe9d21
+Supported Operations
+✅ Decode all four formats (real game fixtures in tests/fixtures.py).
 
-## CS2 Share Code Format
+✅ Encode all four formats (new codes default to cs2-v1).
 
-The application implements the **current CS2 share code format (version 1)**:
+✅ Byte-exact round-trip of every real fixture.
 
-<<<<<<< HEAD
-The real game formats are implemented (ported from the verified
-[csgo-sharecode](https://github.com/akiver/csgo-sharecode) reference, whose
-fixtures are real codes generated by CS:GO / CS2 1.41.8.x):
+✅ Validation: malformed containers, bad checksums, unsupported versions (incl. legacy-v2), screen height 0, CS2-style clamping.
 
-| Format | Container | Notes |
-|---|---|---|
-| `legacy-v1` | `CSGO-xxxxx-xxxxx-xxxxx-xxxxx-xxxxx` | CS:GO era |
-| `legacy-v3` | same legacy container | pixel values + screen height |
-| `legacy-v4` | same legacy container | adds outline mode + Static Square |
-| `cs2-v1` | `CS` + 44 chars, no dashes | native CS2: outline RGBA, scope dot prefs, negative gap, 0.01-step alphas |
+✅ Codes generated by this app's previous internal codec still import (detected as app-legacy-v1).
 
-Both containers are base-57 big numbers (dictionary excludes `0, 1, I, g, l, _`),
-byte 0 = checksum `sum(bytes[1:]) % 256`, byte 1 = version. Formats are
-identified by container + version, never by version alone (legacy-v1 and
-cs2-v1 both store version byte 1).
-
-### Supported Operations
-
-- ✅ Decode all four formats (real game fixtures in `tests/fixtures.py`)
-- ✅ Encode all four formats (new codes default to `cs2-v1`)
-- ✅ Byte-exact round-trip of every real fixture
-- ✅ Validation: malformed containers, bad checksums, unsupported versions (incl. legacy-v2), screen height 0, CS2-style clamping
-- ✅ Codes generated by this app's previous internal codec still import (detected as `app-legacy-v1`)
-=======
-- **Prefix**: `CSGO-`
-- **Encoding**: Custom Base32 alphabet (excludes I, L, O, 1, 0)
-- **Checksum**: CRC8 (polynomial 0x1D)
-- **Fields**: All CS2 crosshair settings including style, gap, length, thickness, color, outline, dot, dynamic spread, split settings, scope settings, T-style
-
-### Supported Operations
-
-- ✅ Decode current CS2 format (v1)
-- ✅ Encode current CS2 format (v1)
-- ✅ Round-trip preservation of all representable settings
-- ✅ Validation with detailed error messages
-- ⚠️ Legacy CS:GO formats: decode only (conversion planned)
->>>>>>> 3dea2aeecbaf60ffca7845c44bb6e5ef98fe9d21
-
-### Example Share Code
-
-```
-CSGO-ABCDEFGHIJKLMNOPQRSTUVWXYZ234567
-```
-
-## Settings
-
+⚙️ Settings
 Settings are automatically saved to:
-```
-%APPDATA%\CrosshairOverlay\settings.json
-```
 
+
+%APPDATA%\CrosshairOverlay\settings.json
 Example structure:
-```json
+
+json
 {
   "schema_version": 1,
   "overlay": {
@@ -249,99 +195,58 @@ Example structure:
   },
   "last_share_code": ""
 }
-```
+⚠️ Overlay Limitations
+Important: This is a standard Windows desktop overlay. It works by creating a transparent, click-through, always-on-top window.
 
-## Overlay Limitations
+Works With:
+✅ Windowed applications
 
-**Important**: This is a standard Windows desktop overlay. It works by creating a transparent, click-through, always-on-top window.
+✅ Borderless windowed applications
 
-### Works With:
-- ✅ Windowed applications
-- ✅ Borderless windowed applications
-- ✅ Most desktop applications
-- ✅ Games running in **Borderless Windowed** mode
+✅ Most desktop applications
 
-### Does NOT Work With:
-- ❌ Exclusive fullscreen applications (many games)
-- ❌ Applications that bypass desktop composition
-- ❌ Applications with overlay blocking (some anti-cheat)
+✅ Games running in Borderless Windowed mode
 
-**This is a Windows limitation, not a bug.** No code injection, memory reading, or anti-cheat bypass is performed.
+Does NOT Work With:
+❌ Exclusive fullscreen applications (many games)
 
-### Troubleshooting Overlay Visibility
+❌ Applications that bypass desktop composition
 
-1. Ensure "Enable Overlay" is checked in General tab
-2. Try disabling "Click Through" temporarily
-3. Check correct monitor is selected
-4. For games: Use **Borderless Windowed** mode, not Exclusive Fullscreen
-5. Some anti-cheat software may block overlays
+❌ Applications with overlay blocking (some anti-cheat)
 
-## Project Structure
+This is a Windows limitation, not a bug. No code injection, memory reading, or anti-cheat bypass is performed.
 
-```
-crosshair-overlay/
+Troubleshooting Overlay Visibility
+Ensure "Enable Overlay" is checked in the General tab.
+
+Try disabling "Click Through" temporarily.
+
+Check the correct monitor is selected.
+
+For games: Use Borderless Windowed mode, not Exclusive Fullscreen.
+
+Some anti-cheat software may block overlays.
+
+📁 Project Structure
+
+duckscrosshair/
 ├── main.py                 # Entry point
 ├── requirements.txt        # Python dependencies
 ├── README.md               # This file
 ├── LICENSE                 # MIT License
 ├── .gitignore              # Git ignore rules
+├── CrosshairOverlay.spec   # PyInstaller spec file
 ├── app/                    # Application core
-│   ├── __init__.py
-│   ├── application.py      # Main application class
-│   ├── constants.py        # Constants and defaults
-│   └── state.py            # Application state
-├── crosshair/              # Crosshair logic
-│   ├── __init__.py
-│   ├── models.py           # Data models
-│   ├── validation.py       # Input validation
-│   ├── renderer.py         # Shared rendering logic
-│   ├── conversion.py       # Share code ↔ internal conversion
-│   └── sharecode/          # CS2 share code codec
-│       ├── __init__.py
-│       ├── alphabet.py     # Base32 encoding
-│       ├── checksum.py     # CRC8 checksum
-│       ├── layouts.py      # Binary field layouts
-│       ├── codec.py        # Main encode/decode
-│       └── exceptions.py   # Custom exceptions
+├── crosshair/              # Crosshair logic, codecs, models
 ├── overlay/                # Overlay window
-│   ├── __init__.py
-│   ├── overlay_window.py   # Transparent overlay widget
-│   ├── monitor_manager.py  # Multi-monitor handling
-│   └── windows_styles.py   # Windows API styles
-├── platform/               # Platform-specific
-│   ├── __init__.py
-│   └── hotkeys.py          # Global hotkeys (Windows)
+├── winplatform/            # Platform-specific (hotkeys, etc.)
 ├── storage/                # Settings persistence
-│   ├── __init__.py
-│   ├── settings_store.py   # JSON storage with debounce
-│   └── migrations.py       # Schema migrations
 ├── ui/                     # User interface
-│   ├── __init__.py
-│   ├── settings_window.py  # Main settings window
-│   ├── preview_widget.py   # Live preview with controls
-│   ├── crosshair_controls.py # All crosshair sliders/inputs
-│   ├── code_import_widget.py # Share code import/export
-│   └── tray.py             # System tray icon
-└── tests/                  # Unit tests
-    ├── test_geometry.py
-    ├── test_validation.py
-    ├── test_settings_store.py
-    ├── test_sharecode_decode.py
-    ├── test_sharecode_encode.py
-    └── test_round_trip.py
-```
+├── resources/              # Icons, assets
+├── tests/                  # Unit tests
+└── build/                  # Build artifacts
+🧪 Running Tests
 
-## Dependencies
-
-- **PySide6** (Qt for Python) - GUI framework
-- **pytest** - Testing framework
-- **pytest-qt** - Qt testing utilities
-
-All dependencies are in `requirements.txt`.
-
-## Running Tests
-
-```powershell
 # Run all tests
 pytest
 
@@ -350,74 +255,38 @@ pytest tests/test_round_trip.py -v
 
 # Run with coverage
 pytest --cov=crosshair --cov=overlay --cov=storage --cov=platform --cov=ui --cov=app
-```
-
-## Development
-
-### Architecture
-
+🛠️ Development
+Architecture
 The application follows a modular architecture:
 
-1. **Models** (`crosshair/models.py`): Pure data classes for settings
-2. **Renderer** (`crosshair/renderer.py`): Shared QPainter logic for preview and overlay
-3. **Codec** (`crosshair/sharecode/`): CS2 share code encoding/decoding
-4. **Overlay** (`overlay/`): Transparent window with Windows API styles
-5. **UI** (`ui/`): Settings window with tabs for all configuration
-6. **Storage** (`storage/`): JSON persistence with debounced writes
-7. **Platform** (`platform/`): Windows global hotkeys via native API
+Models (crosshair/models.py): Pure data classes for settings.
 
-### Adding Features
+Renderer (crosshair/renderer.py): Shared QPainter logic for preview and overlay.
 
-1. Add model fields in `crosshair/models.py`
-2. Add validation in `crosshair/validation.py`
-3. Update renderer in `crosshair/renderer.py`
-4. Add controls in `ui/crosshair_controls.py`
-5. Update share code layouts in `crosshair/sharecode/layouts.py` if needed
-6. Add tests in `tests/`
+Codec (crosshair/sharecode/): CS2 share code encoding/decoding (legacy).
 
-## Building Distribution
+Codecs (crosshair/codecs/): New multi-game codec system.
 
-### PyInstaller Spec
+Overlay (overlay/): Transparent window with Windows API styles.
 
-The project includes a `CrosshairOverlay.spec` file for building:
+UI (ui/): Settings window with tabs for all configuration.
 
-```powershell
-pyinstaller CrosshairOverlay.spec
-```
+Storage (storage/): JSON persistence with debounced writes.
 
-### Required Resources
+Platform (winplatform/): Windows global hotkeys via native API.
 
-- Qt plugins (automatically bundled)
-- Icons (generated programmatically)
-- No external resource files needed
+📄 License
+This project is licensed under the MIT License — see the LICENSE file for details.
 
-## Known Issues
+🙏 Acknowledgments
+CS2 share code format research from:
 
-1. **Exclusive Fullscreen**: Overlay won't appear over exclusive fullscreen apps
-2. **High DPI**: Some scaling edge cases on multi-monitor mixed DPI setups
-3. **Hotkey Conflicts**: Some keys may be reserved by system/other apps
-4. **Legacy Codes**: Only current CS2 format fully supported
+akiver/csgo-sharecode
 
-## Contributing
+JDD310/CS2-Crosshair-Converter
 
-1. Fork the repository
-2. Create a feature branch
-3. Make changes with tests
-4. Ensure all tests pass
-5. Submit a pull request
+setposgg/cs2-crosshair
 
-## License
+PySide6/Qt for the excellent GUI framework.
 
-MIT License - see [LICENSE](LICENSE) for details.
-
-## Acknowledgments
-
-- CS2 share code format research from:
-  - [akiver/csgo-sharecode](https://github.com/akiver/csgo-sharecode)
-  - [JDD310/CS2-Crosshair-Converter](https://github.com/JDD310/CS2-Crosshair-Converter)
-  - [setposgg/cs2-crosshair](https://github.com/setposgg/cs2-crosshair)
-<<<<<<< HEAD
-- PySide6/Qt for the excellent GUI framework
-=======
-- PySide6/Qt for the excellent GUI framework
->>>>>>> 3dea2aeecbaf60ffca7845c44bb6e5ef98fe9d21
+<p align="center">Made with ❤️ for the gaming community</p>
