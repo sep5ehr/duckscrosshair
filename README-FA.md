@@ -45,7 +45,7 @@
 
 ### اجرا از سورس‌کد
 
-```
+
 # کلون یا دانلود پروژه
 git clone https://github.com/sep5ehr/duckscrosshair.git
 cd duckscrosshair
